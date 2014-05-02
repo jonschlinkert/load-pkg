@@ -1,0 +1,44 @@
+{
+  "name": "load-pkg",
+  "description": "Load the package.json in the base of the user's current project.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/load-pkg",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/load-pkg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/load-pkg/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/load-pkg/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": [
+    "package",
+    "load",
+    "pkg",
+    "config",
+    "package.json"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "verb": "~0.2.0",
+    "mocha": "*"
+  },
+  "dependencies": {
+    "cwd": "~0.3.3"
+  }
+}
