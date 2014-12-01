@@ -1,3 +1,3 @@
 'use strict';
-var cwd = require('cwd');
-module.exports = require(cwd('package.json'));
+
+module.exports = require(require('cwd')('package.json'));
