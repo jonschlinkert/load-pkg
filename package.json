@@ -1,7 +1,7 @@
 {
   "name": "load-pkg",
   "description": "Load the package.json in the base of the user's current project.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/load-pkg",
   "author": {
     "name": "Jon Schlinkert",
@@ -32,10 +32,11 @@
     "cwd": "^0.4.0"
   },
   "keywords": [
-    "package",
-    "load",
-    "pkg",
     "config",
-    "package.json"
+    "json",
+    "load",
+    "package",
+    "package-json",
+    "pkg"
   ]
 }
