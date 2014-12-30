@@ -1,3 +1,9 @@
 'use strict';
 
-module.exports = require(require('cwd')('package.json'));
+var pkg = {};
+
+try {
+  pkg = require(require('cwd')('package.json'));
+} catch (err) {}
+
+module.exports = pkg;
