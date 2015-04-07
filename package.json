@@ -1,7 +1,7 @@
 {
   "name": "load-pkg",
   "description": "Load the package.json in the base of the user's current project.",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "homepage": "https://github.com/jonschlinkert/load-pkg",
   "author": {
     "name": "Jon Schlinkert",
