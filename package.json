@@ -29,7 +29,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "cwd": "^0.5.0"
+    "cwd": "^0.6.0"
   },
   "devDependencies": {
     "mocha": "*"
