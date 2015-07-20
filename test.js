@@ -1,9 +1,10 @@
 'use strict';
+
+/* deps: mocha */
 var assert = require('assert');
 var pkg = require('./');
 
-
 it('should load the package.json for this project', function () {
   assert.equal(pkg.name, 'load-pkg');
-  assert.equal(pkg.license.type, 'MIT');
+  assert.equal(pkg.license, 'MIT');
 });

@@ -8,11 +8,13 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 var cwd = require('cwd');
 var pkg = {};
 
 try {
-  var fp = cwd('package.json');
+  var dir = cwd('package.json');
+  var fp = path.resolve(dir, 'package.json');
   pkg = JSON.parse(fs.readFileSync(fp, 'utf8'));
 } catch (err) {}
 
