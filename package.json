@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "cwd": "^0.8.3"
+    "find-pkg": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "*"
@@ -36,10 +36,9 @@
   "verb": {
     "related": {
       "list": [
-        "list-deps",
-        "resolve-dep",
-        "look-up",
-        "load-plugins"
+        "cwd",
+        "find-pkg",
+        "look-up"
       ]
     }
   }
