@@ -8,18 +8,11 @@
 'use strict';
 
 var fs = require('fs');
-var path = require('path');
-var cwd = require('cwd');
+var findPkg = require('find-pkg');
 
-module.exports = function loadPkg(fp) {
+module.exports = function loadPkg(dir) {
   try {
-    fp = fp || process.cwd();
-    if (/package\.json$/.test(fp)) {
-      // allow `cwd` to ensure the path is correct
-      // based on the user's actual cwd
-      fp = path.dirname(fp);
-    }
-    var filepath = cwd(path.join(fp, 'package.json'));
+    var filepath = findPkg(dir);
     var str = fs.readFileSync(filepath, 'utf8');
     return JSON.parse(str);
   } catch (err) {}
