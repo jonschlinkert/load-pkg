@@ -16,6 +16,10 @@ module.exports = function(dir, cb) {
     dir = null;
   }
 
+  if (typeof cb !== 'function') {
+    throw new TypeError('load-pkg async expects a callback function');
+  }
+
   findPkg(dir || process.cwd(), function(err, fp) {
     if (err) return cb(err);
 
