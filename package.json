@@ -1,7 +1,7 @@
 {
   "name": "load-pkg",
   "description": "Loads the package.json from the root of the user's current project.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "homepage": "https://github.com/jonschlinkert/load-pkg",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/load-pkg",
@@ -34,6 +34,9 @@
     "pkg"
   ],
   "verb": {
+    "plugins": [
+      "gulp-format-md"
+    ],
     "related": {
       "list": [
         "cwd",
