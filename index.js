@@ -1,40 +1,55 @@
 /*!
  * load-pkg <https://github.com/jonschlinkert/load-pkg>
  *
- * Copyright (c) 2015, Jon Schlinkert.
- * Licensed under the MIT License.
+ * Copyright (c) 2015-present, Jon Schlinkert.
+ * Released under the MIT License.
  */
 
 'use strict';
 
-var fs = require('fs');
-var findPkg = require('find-pkg');
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
+const find = require('find-pkg');
 
-module.exports = function(dir, cb) {
-  if (typeof dir === 'function') {
-    cb = dir;
-    dir = null;
+module.exports = (...args) => {
+  let cwd = args.find(arg => typeof arg === 'string');
+  let options = args.find(arg => arg && typeof arg === 'object') || {};
+  let callback = args.find(arg => typeof arg === 'function');
+
+  if (!cwd) cwd = options.cwd || process.cwd();
+  if (path.basename(cwd) === 'package.json') {
+    cwd = path.dirname(cwd);
   }
 
-  if (typeof cb !== 'function') {
-    throw new TypeError('load-pkg async expects a callback function');
+  const promise = load(cwd, options);
+  if (typeof callback === 'function') {
+    promise.then(pkg => callback(null, pkg)).catch(callback);
+    return;
   }
-
-  findPkg(dir || process.cwd(), function(err, fp) {
-    if (err) return cb(err);
-
-    fs.readFile(fp, 'utf8', function(err, str) {
-      if (err) return cb(err);
-      cb(null, JSON.parse(str));
-    });
-  });
+  return promise;
 };
 
-module.exports.sync = function(dir) {
-  try {
-    var filepath = findPkg.sync(dir || process.cwd());
-    var str = fs.readFileSync(filepath, 'utf8');
-    return JSON.parse(str);
-  } catch (err) {}
-  return null;
+async function load(cwd, options) {
+  const read = util.promisify(fs.readFile);
+  const pkgPath = await find(cwd, options);
+  if (pkgPath) {
+    const buffer = await read(pkgPath);
+    return JSON.parse(buffer);
+  }
+}
+
+module.exports.sync = function(...args) {
+  let cwd = args.find(arg => typeof arg === 'string');
+  let options = args.find(arg => arg && typeof arg === 'object') || {};
+
+  if (!cwd) cwd = options.cwd || process.cwd();
+  if (path.basename(cwd) === 'package.json') {
+    cwd = path.dirname(cwd);
+  }
+
+  let pkgPath = find.sync(cwd, options);
+  if (pkgPath) {
+    return JSON.parse(fs.readFileSync(pkgPath));
+  }
 };
