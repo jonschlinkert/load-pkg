@@ -1,7 +1,7 @@
 {
   "name": "load-pkg",
-  "description": "Loads the package.json from the root of the user's current project.",
-  "version": "3.0.1",
+  "description": "Loads package.json, by finding the first directory with a package.json, recursing up, starting with the given directory.",
+  "version": "4.0.0",
   "homepage": "https://github.com/jonschlinkert/load-pkg",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/load-pkg",
@@ -14,26 +14,53 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8"
   },
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "find-pkg": "^0.1.0"
+    "find-pkg": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^5.2.0"
   },
   "keywords": [
     "config",
+    "dir",
+    "directory",
+    "file",
+    "find",
+    "find-up",
+    "findup",
+    "findup-sync",
+    "folder",
     "json",
     "load",
+    "look",
+    "look-up",
+    "match",
     "package",
     "package-json",
-    "pkg"
+    "parent",
+    "parents",
+    "parse",
+    "path",
+    "pkg",
+    "read",
+    "resolve",
+    "search",
+    "up",
+    "walk",
+    "walking"
   ],
   "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
     "plugins": [
       "gulp-format-md"
     ],
@@ -43,6 +70,9 @@
         "find-pkg",
         "look-up"
       ]
+    },
+    "lint": {
+      "reflinks": true
     }
   }
 }
