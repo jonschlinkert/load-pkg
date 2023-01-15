@@ -20,6 +20,13 @@ describe('promise', () => {
       });
   });
 
+  it('should load the package.json from the specified directory', () => {
+    return load('fixtures/sub')
+      .then(pkg => {
+        assert.equal(pkg.name, 'abc');
+      });
+  });
+
   it('should load the package.json from the specified package.json', () => {
     return load('fixtures/package.json')
       .then(pkg => {
@@ -64,6 +71,11 @@ describe('sync', () => {
 
   it('should load the package.json from the specified directory', () => {
     const pkg = load.sync('fixtures');
+    assert.equal(pkg.name, 'abc');
+  });
+
+  it('should load the package.json from the specified subpath', () => {
+    const pkg = load.sync('fixtures/sub');
     assert.equal(pkg.name, 'abc');
   });
 
