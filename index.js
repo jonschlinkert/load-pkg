@@ -22,7 +22,7 @@ module.exports = (...args) => {
     cwd = path.dirname(cwd);
   }
 
-  const promise = load(cwd, options);
+  const promise = load(cwd);
   if (typeof callback === 'function') {
     promise.then(pkg => callback(null, pkg)).catch(callback);
     return;
@@ -30,9 +30,9 @@ module.exports = (...args) => {
   return promise;
 };
 
-async function load(cwd, options) {
+async function load(cwd) {
   const read = util.promisify(fs.readFile);
-  const pkgPath = await find(cwd, options);
+  const pkgPath = await find(cwd);
   if (pkgPath) {
     const buffer = await read(pkgPath);
     return JSON.parse(buffer);
@@ -48,7 +48,7 @@ module.exports.sync = function(...args) {
     cwd = path.dirname(cwd);
   }
 
-  let pkgPath = find.sync(cwd, options);
+  let pkgPath = find.sync(cwd);
   if (pkgPath) {
     return JSON.parse(fs.readFileSync(pkgPath));
   }
